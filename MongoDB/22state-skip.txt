@@ -1,0 +1,12 @@
+ข้าม document ที่ไม่ต้องการด้วย $skip
+
+เนื่องจากฐานข้อมูลมีจำนวน document มาก หากดึงข้อมูล document มาทั้งหมดแล้วต้องการอยากจะข้ามไปทำงานที่ document
+ที่ต้องการจะใช้ $skip
+
+โครงสร้าง
+{$skip:จำนวน document <integer>}
+
+คำสั่ง
+db.Employee.aggregate([{$project:{_id:0,name:1,department:1}},{$skip:13}]) //state $project&$skip
+ผลลัพธ์ จะแสดงข้อมูลที่ไม่ได้ถูก skip โดยนับจากจำนวนที่ไม่ได้ถูกข้ามใน state $skip
+

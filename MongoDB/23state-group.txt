@@ -1,0 +1,41 @@
+จัดกลุ่มข้อมูลด้วย $group (GROUP BY)
+
+เป็นการจัดกลุ่มข้อมูล document ไว้เป็นกลุ่มเดียวกันโดยมี _id เก็บรายการข้อมูลแต่ละกลุ่มที่ไม่ซ้ำกันและยังสามารถเพิ่ม field ในการคำนวณ
+หาผลลัพธ์ภายในกลุ่มข้อมูลที่สร้างขึ้นได้ โดยใช้งานกลุ่มร่วมกับ function ทางสถิติ
+
+โครงสร้าง
+{$group:{ชื่อ field ที่ต้องการจัดกลุ่ม:ตัวดำเนินการทางสถิติ}}
+
+ตัวดำเนินการทางสถิติที่ทำงานร่วมกับ $group
+$sum หาผลรวม document ภายในกลุ่ม
+$avg หาค่าเฉลี่ย document ภายในกลุ่ม
+$min หาค่าต่ำสุด document ภายในกลุ่ม
+$max หาค่าสูงสุด document ภายในกลุ่ม
+$first หาค่า document ลำดับแรกภายในกลุ่ม
+$last หาค่า document ลำดับสุดท้ายภายในกลุ่ม
+$push แทรกค่า array ไปยังผลลัพธ์ภายในกลุ่ม //object
+$addToSet แทรกค่า array ไปยังผลลัพธ์ในกลุ่มโดยไม่ซ้ำกัน
+
+ตัวอย่างการนับจำนวนทั้งหมด
+{$group:{_id:null,myField:{$count:{}}}}
+
+_id คือ ระบุชื่อ field ว่าต้องการแบ่งกลุ่มโดยใช้ Field ใดเป็น Field อ้างอิงหากระบุ null คือไม่มี field ที่อ้างอิง
+myField คือชื่อ field ที่เก็บผลลัพธ์เอาไว้ใช้ $count มานับจำนวน
+
+ตัวอย่างคำสั่ง
+db.Employee.aggregate([{$group:{_id:"$department"}}]) //state $group
+db.Employee.aggregate([{$group:{_id:"$department","จำนวนพนักงานในแผนก":{$count:{}}}}]) //state $group&$count
+db.Employee.aggregate([{$group:{_id:"$address","จำนวนพนักงานในแต่ละจังหวัด":{$count:{}}}}])
+db.Employee.aggregate([{$group:{_id:null,"ยอดรวมเงินเดือน":{$sum:"$salary"}}}]) //$sum
+db.Employee.aggregate([{$group:{_id:"$department","จำนวนเงินเดือนแต่ละแผนก":{$sum:"$salary"}}}]) //$sum ที่มีการอ้างอิงชื่อ field
+db.Employee.aggregate([{$match:{department:"ฝ่ายขาย"}},{$group:{_id:"$department","เงินเดือนรวมของแผนก":{$sum:"$salary"}}}]) //$sum+$match
+db.Employee.aggregate([{$group:{_id:"$department","เงินเดือนเฉลี่ยของแผนก :":{$avg:"$salary"}}}]) //$avg
+db.Employee.aggregate([{$group:{_id:"$address","เงินเดือนสูงสุดของจังหวัดคือ :":{$max:"$salary"}}}]) //$max
+db.Employee.aggregate([{$group:{_id:"$address","เงินเดือนต่ำที่สุดของจังหวัด":{$min:"$salary"}}}]) //$min
+db.Employee.aggregate([{$group:{_id:null,"พนักงานคนแรก":{$first:"$name"}}}]) //first
+db.Employee.aggregate([{$group:{_id:null,"พนักงานคนสุดท้าย":{$last:"$name"}}}]) //last
+db.Employee.aggregate([{$group:{_id:"$department","เงินเดือนรวมของแผนก":{$sum:"$salary"},"detail":{$push:{name:"$name",salary:"$salary"}}}}]) //push object
+db.Employee.aggregate([{$group:{_id:"$department","ผลรวมเงินเดือนของแผนก":{$sum:"$salary"},"ข้อมูลพนักงาน":{$addToSet:"$name"}}}]) //addToSet array
+
+
+

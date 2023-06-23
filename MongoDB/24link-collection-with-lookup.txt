@@ -1,0 +1,16 @@
+เชื่อม collection ด้วย $lookup
+
+เป็นการสอบถามข้อมูล document ที่เก็บข้อมูลใน collection ที่แตกต่างกันโดยกำหนดให้ collection หลักเชื่อมกับ collection ด้านนอก
+ซึ่ง collection ดังกล่าวต้องอยู่ในฐานข้อมูลเดียวกัน ผลลัพธ์ที่ได้คือ กลุ่ม document ที่เชื่อมโยงข้อมูลระหว่าง collection
+
+โครงสร้าง
+{$lookup:{
+    from:"ชื่อ collection ด้านนอกที่ต้องการเชื่อมโยง",
+    localField:"Field จาก collection หลัก",
+    foreignField:Field collection ที่เชื่อมโยง,
+    as : "ชื่อ field ที่เก็บผลลัพธ์"
+    }
+}
+
+คำสั่ง
+db.employee.aggregate([{$lookup:{from:"department",localField:"department_id",foreignField:"id",as:"ชื่อแผนก"}}]) //state $lookup

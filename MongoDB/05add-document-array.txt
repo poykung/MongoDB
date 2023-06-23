@@ -1,0 +1,9 @@
+การเพิ่ม document ที่ระบุ filed ด้านในแบบรูปแบบของ array ที่สามารถเก็บค่าได้มากกว่า 1 ค่า
+
+db.(ชื่อ collection).insertOne(
+    {name:poy,
+    age:20,
+    social:["facebook","ig","twitter"]
+    }
+)
+

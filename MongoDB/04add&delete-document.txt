@@ -1,0 +1,11 @@
+การเพิ่ม document
+    - การเพิ่ม document ทีละ 1 รายการ
+    คำสั่ง db.(ชื่อ Collection).insertOne(<document>)
+
+    - การเพิ่ม document หลายรายการ
+    คำสั่ง db.(ชื่อ Collection).insertMany([<document>])
+
+การลบ document
+    - ลบ document ทีละ 1 รายการ
+    คำสั่ง db.(ชื่อ Collection).deleteOne(<document>)
+

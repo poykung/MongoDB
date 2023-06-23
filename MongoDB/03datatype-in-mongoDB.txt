@@ -1,0 +1,13 @@
+Data-type-mongoDB
+
+- String จัดเก็บ string หรือชนิดข้อความและรองรับ UTF-8 เขียนในสัญญาลักษณ์ "" (double quote)
+- Integer จัดเก็บเลขจำนวนเต็ม
+- Double จำเก็บเลขทศนิยม
+- Boolean จัดเก็บค่า boolean(True/False)
+- Null จัดเก็บค่า null หรือไม่มีค่า
+- Object จับเก็บ document โดยเขียนภายใต้สัญญาลักษณ์ {}
+- Array จัดเก็บชุดข้อมูลโดยเขียนภายใต้สัญญาลักษณ์ []
+- ObjectID จัดเก็บ ID ของ document โดยไม่ซ้ำค่ากัน
+- Date จัดเก็บวันที่และเวลา
+- Binary Data จับเก็บข้อมูลแบบ Binary
+- May key / Min key จัดเก็บการเปรียบเทียบค่ามากกว่าน้อยกว่ากับข้อมูลอื่นๆ

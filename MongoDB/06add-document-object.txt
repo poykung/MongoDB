@@ -1,0 +1,13 @@
+การเพิ่ม document ที่ระบุ filed ด้านในแบบรูปแบบของ object ที่สามารถเก็บค่าได้มากกว่า 1 ค่า
+
+db.(ชื่อ collection).insertOne(
+    {   name:poy,
+        age:99,
+        gender:male,
+        general:{
+            weight:59.9,
+            height:170
+        }
+    
+    }
+)

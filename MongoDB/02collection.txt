@@ -1,0 +1,10 @@
+การจัดการกับ collection
+
+- สร้าง collection
+    db.createCollection("ชื่อ collection")
+
+- เปลี่ยนชื่อ collection
+    db.(ชื่อ collection).renameCollection("ชื่อ collection ใหม่")
+
+- ลบ collection
+    db.(ชื่อ collection).drop()

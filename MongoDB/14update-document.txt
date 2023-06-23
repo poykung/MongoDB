@@ -1,0 +1,19 @@
+การ update document มี 2 รูปแบบ
+    - update document รายการเดียว
+    - update document หลายรายการ
+
+โครงสร้างคำสั่ง
+    db.(ชื่อ collection).updateOne({1,2,3})
+    1. document ที่ต้องการแก้ไข
+    2. ระบุข้อมูลที่ต้องการแก้ไข
+        คำสั่ง - {$set:{ชื่อ field:ค่าที่ต้องการแก้ไข}}
+        เช่น updateOne({name:"สมชาย"},{$set:{salary:50000}})
+    3. ตัวเลือกเพิ่มเติม
+
+update รายการเดียว
+คำสั่ง db.Employee.updateOne({name:"สมชาย"},{$set:{salary:50000}})
+กรณีที่ต้องการ update field มากกว่า 1 รายการให้ใช้เครื่องหมาย , ขั้น
+เช่น db.Employee.updateOne({name:"สุดารัตน์"},{$set:{salary:30000,address:"น่าน"}})
+
+update หลายรายการ
+db.Employee.updateMany({address:"กรุงเทพมหานคร"},{$set:{salary:69000}})

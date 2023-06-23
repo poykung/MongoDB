@@ -1,0 +1,11 @@
+นับจำนวนด้วย $count
+
+เป็นการนับจำนวน document ใน collection และส่งออกเป็นจำนวน document ที่นับได้
+
+โครงสร้าง
+{$count:ชื่อ field ที่ต้องการนับจำนวน:"string"}
+
+คำสั่ง
+db.Employee.aggregate([{$match:{salary:15000}},{$count:"จำนวนพนักงานที่มีเงินเดือน 150000"}]) //state $match&$count
+db.Employee.aggregate([{$match:{salary:{$gt:50000}}},{$count:"จำนวนพนักงานที่มีเงินเดือนมากกว่า 50000"}]) //state $match&$count+operator
+

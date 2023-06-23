@@ -1,0 +1,10 @@
+การ find doucment ที่มีการเก็บข้อมูลด้านในเป็นรูปแบบ object
+
+คำสั่ง db.(ชื่อ collection).find({"ชื่อ field.ชื่อ field ย่อย":value})
+เช่น db.(ชื่อ collection).find({"general.gender":male})
+ผลลัพธ์ที่ได้จะแสดงข้อมูลที่ระบุเงื่อนไขผ่าน object
+
+หากต้องการทราบหลายเงื่อนไขให้ใส่เครื่องหมาย , ขั้นในการ find หา doucment
+
+คำสั่ง db.(ชื่อ collection).find({"ชื่อ field ข้อมูลที่ต้องการทราบ","ชื่อ field ที่เป็น ojb.ชื่อ field ย่อย":value})
+เช่น db.(ชื่อ collection).find({"department":"โปรแกรมเมอร์","general.gender":"ชาย"})

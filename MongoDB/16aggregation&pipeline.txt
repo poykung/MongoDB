@@ -1,0 +1,29 @@
+Aggregation&pipeline
+
+กระบวนการนำข้อมูลจากฐานข้อมูลมารวมเข้าด้วยกันและวิเคราะห์หาผลลัพธ์ที่ต้องการ
+โดยจะนำเอา document ต่างๆจาก collection ไปเข้าสู่กระบวนการกลั่นกรอง(state)
+เพื่อวิเคราะห์หาผลลัพธ์(output)
+
+โครงสร้างคำสั่ง
+db.(ชื่อ collection).aggregate([state])
+
+กระบวนการกลั่นกรองข้อมูล(state)
+$match กรองเอาเฉพาะ document ตรงตามเงื่อนไขที่กำหนด
+$group จำกลุ่ม document และคำนวณค่าเก็บใน output
+$project แสดงข้อมูล document เอาเฉพาะ field ที่ทำหนด
+$sort จัดเรียง document
+$skip ข้าม document ตามจำนวนที่ระบุ
+$limit จัดการแสดงจำนวน document
+$unwind แยกสมาชิก field array ออกเป็น document
+$count นับจำนวน document
+$lookup ดูข้อมูล document ที่มี collection ต่างกัน
+
+เปรียบเทียบคำสั่ง SQL กับ state
+
+WHERE | $match
+GROUP BY | $group
+SELECT | $project
+ORDER BY | $sort
+LIMIT | $limit
+JOIN | $lookup
+

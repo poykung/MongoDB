@@ -1,0 +1,11 @@
+สอบถามข้อมูลด้วย $match (where)
+
+เป็นรูปแบบการสอบถามข้อมูลโดยเลือกเอาเฉพาะ document ที่ผ่านเงื่อนไขที่ระบุแล้วส่งออกไป
+
+โครงสร้าง
+{$match:{ชื่อ field :เงื่อนไข}}
+
+คำสั่ง
+db.Employee.aggregate([{$match:{salary:15000}}]) //สามารถเขียนร่วมกับ state อื่นๆได้โดยใช้เครื่องหมาย ,
+db.Employee.aggregate([{$match:{salary:15000}},{$project:{_id:0,name:1,department:1}}]) //state $match&$project
+db.Employee.aggregate([{$match:{salary:{$gt:15000}}},{$project:{_id:0,name:1,department:1,salary:1}}]) //ใช้ state ร่วมกับ operator

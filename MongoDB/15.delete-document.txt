@@ -1,0 +1,9 @@
+การลบ document มี 2 รูปแบบ
+- ลบรายการเดียว
+- ลบหลายรายการ
+
+ลบรายการเดียว
+db.Employee.deleteOne({name:"สมชาย"})
+
+ลบหลายรายการ
+db.Employee.deleteMany({address:"กรุงเทพมหานคร"})

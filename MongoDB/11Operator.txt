@@ -1,0 +1,30 @@
+$eq เท่ากับ (equal)
+$gt มากกว่า (geater)
+$gte มากกว่าหรือเท่ากับ (geater or equal)
+$lt น้อยกว่า (less)
+$lte น้อยกว่าหรือเท่ากับ (less or equal)
+$ne ไม่เท่ากับ (not equal)
+
+รูปแบบการเขียน
+db.Employee.find({salary:{$eq:15000}}) //$eq เท่ากับ (equal)
+db.Employee.find({salary:{$gt:40000}}) //$gt มากกว่า (geater)
+db.Employee.find({salary:{$gte:40000}}) //$gte มากกว่าหรือเท่ากับ (geater or equal)
+db.Employee.find({salary:{$lt:30000}}) //$lt น้อยกว่า (less)
+db.Employee.find({salary:{$lte:30000}}) //$lte น้อยกว่าหรือเท่ากับ (less or equal)
+db.Employee.find({department:{$ne:"โปรแกรมเมอร์"}}) //$ne ไม่เท่ากับ (not equal)
+
+ตัวดำเนินการทางตรรกศาสตร์
+
+$and ตรงทั้งสองเงื่อนไข
+$or เงื่อนไขใดเงื่อนไขหนึ่ง
+$nor ไม่ตรงกับเงื่อนไขใดเลย
+$not ตรงข้ามกับเงื่อนไขที่กำหนด
+
+การเขียน
+
+db.Employee.find({$and:[{salary:{$gt:15000}},{salary:{$lt:45000}}]}) //$and
+db.Employee.find({$or:[{department:"วิศวกร"},{"general.gender":"ชาย"}]}) //or +ใช้งานร่วมกับ object
+db.Employee.find({$nor:[{address:"กรุงเทพมหานคร"},{department:"ฝ่ายขาย"}]}) //$nor
+db.Employee.find({"general.weight":{$not:{$gte:52}}}) //not + operator เปรียบเทียบ
+
+

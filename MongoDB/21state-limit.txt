@@ -1,0 +1,11 @@
+จำกัดข้อมูลด้วย $limit (LIMIT)
+
+เนื่องจากฐานข้อมูลมีจำนวนมากหากดึงข้อมูล document มาทั้งหมดอาจทำให้ไม่สะดวกในการดูรายละเอียดข้อมูล
+จึงมีการจัดการ document โดยใช้ $limit
+
+โครงสร้าง
+{$limit:จำนวน document <integer>}
+
+คำสั่ง
+db.Employee.aggregate([{$limit:3}]) //$limit
+db.Employee.aggregate([{$project:{_id:0,name:1,salary:1}},{$sort:{salary:-1}},{$limit:2}]) //state $project&sort&$limit

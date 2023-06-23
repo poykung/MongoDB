@@ -1,0 +1,3 @@
+mongoDB สามารถ export ข้อมูลเพื่อนำไปใช้งานต่อโดย export ผ่าน tool mongoDB compass
+โดย file ที่ได้จากการ export จะเป็นรูปแบบ json/csv และทำการ import เข้ามาเพื่อใช้งานต่อไป
+

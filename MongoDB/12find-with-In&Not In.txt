@@ -1,0 +1,12 @@
+การ find ข้อมูลด้วย in และ not in 
+
+$in มีค่าอยู่ใน array ที่ต้องการค้นหา เปรียบเสมือน =
+$nin ไม่มีค่าอยู่ใน array ที่ต้องการค้นหา เปรียบเสมือน !=
+
+การเขียน
+
+db.Employee.find({address:{$in:["กรุงเทพมหานคร","ระยอง"]}}) //$in
+db.Employee.find({address:{$nin:["กรุงเทพมหานคร","ระยอง"]}}) //$nin
+db.Employee.find({department:{$in:["ฝ่ายขาย","ฝ่ายการตลาด"]}}) //$in
+db.Employee.find({department:{$nin:["ฝ่ายขาย","ฝ่ายการตลาด"]}}) //$nin
+db.Employee.find({"general.height":{$in:[168,169,175]}}) ใช้ //$in ร่วมกับ object
